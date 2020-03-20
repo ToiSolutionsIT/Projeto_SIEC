@@ -1,0 +1,38 @@
+{{>_navbarAdmin}}
+<div class="container mt-4">
+    {{>_msg}}
+    {{#each errors}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{text}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {{else}}
+    {{/each}}
+    <center>
+        <h3 style="text-decoration: underline;">Editar informações do {{curso.nome}}:</h3>
+    </center>
+    <div class="card mt-4">
+        <div class="card-body">
+            <form action="/admin/cursos/edit" method="POST">
+                <input type="hidden" name="id" value="{{curso._id}}">
+                    <label for="nome">Nome:</label>
+                        <input type="text" name="nome" id="nome" placeholder="Nome do curso" class="form-control" value="{{curso.nome}}">
+                    <label for="vagas">Vagas:</label>
+                        <input type="number" name="vagas" id="vagas" placeholder="Número de vagas" class="form-control" value="{{curso.vagas}}">
+                    <label for="professor">Professor:</label>
+                        <input type="text" name="professor" id="professor" placeholder="Orientador do curso" class="form-control" value="{{curso.professor}}">
+                    <label for="sala">Sala:</label>
+                        <input type="text" name="sala" id="sala" class="form-control" value="{{curso.sala}}"><br>
+                    <label for="dt">Data:</label>
+                        <input type="date" name="dt" id="dt" class="form-control" value="{{curso.dt}}"><br>
+                    <label for="duracao">Duração:</label>
+                        <input type="text" name="duracao" id="duracao" class="form-control" value="{{curso.duracao}}"><br>
+                    <label for="desc">Descrição:</label>
+                        <input type="text" name="desc" id="desc" class="form-control" value="{{curso.desc}}"><br>
+                    <button type="submit" class="btn btn-success">Salvar alterações</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+{{>_navbarAdmin}}
+<div class="container mt-4">
+    {{>_msg}}
+    <h2 id="titleYear"></h2>
+    <script>
+        var dt = new Date();
+        var ano = dt.getFullYear();
+        var html = document.getElementById('titleYear');
+        html.innerHTML = `EVENTOS TOUFFIC ${ano}:`;
+    </script>
+    <hr>
+    <a href="/admin/eventos/add"><button class="btn btn-success">Novo evento</button></a>
+
+    {{#each eventos}}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 id="txtTitle">{{nome}}</h4>
+                <small><strong>Vagas: </strong> {{vagas}}</small>
+                <br>
+                <small><strong>Data: </strong> {{dt}}</small>
+                <br>
+                <small><strong>Descrição: </strong>{{desc}}</small>   
+                <br>
+                <br>
+                <a href="/admin/eventos/edit/{{_id}}">
+                    <button class="btn btn-info mt-4">Editar evento</button>
+                </a>
+                <form action="/admin/eventos/deletar" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" class="btn btn-danger mt-2">Excluir evento</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+    {{else}}
+        <h4 class="mt-3">Nenhum evento registrada no momento</h4>
+    {{/each}}
+</div>

@@ -1,0 +1,39 @@
+{{>_navbarAdmin}}
+    <div class="container mt-4">
+    {{>_msg}}
+    {{#each errors}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{text}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {{else}}
+    {{/each}}
+    <h3>Novo Curso:</h3>
+    <div class="card">
+        <div class="card-body">
+            <form action="/admin/cursos/novo" method="POST">
+                <label for="nome">Nome:</label>
+                    <input type="text" name="nome" id="nome" placeholder="Nome do curso" class="form-control">
+                <label for="vagas">Vagas:</label>
+                    <input type="number" name="vagas" id="vagas" placeholder="Número de vagas" class="form-control">
+                <label for="professor">Professor:</label>
+                    <input type="text" name="professor" id="professor" placeholder="Orientador do curso" class="form-control">
+                <label for="sala">Sala:</label>
+                    <input type="text" name="sala" id="sala" class="form-control">
+                <br>
+                <label for="dt">Data:</label>
+                    <input type="date" name="dt" id="dt" class="form-control">
+                <br>
+                <label for="duracao">Duração:</label>
+                    <input type="text" name="duracao" id="duracao" class="form-control">
+                <br>
+                <label for="desc">Descrição:</label>
+                    <input type="text" name="desc" id="desc" class="form-control">
+                <br>
+                <button type="submit" class="btn btn-success">Criar evento</button>
+            </form>
+        </div>
+    </div>
+</div>

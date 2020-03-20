@@ -1,0 +1,42 @@
+{{>_navbarAdmin}}
+    <div class="container mt-4">
+    {{>_msg}}
+    <h2 id="titleYear"></h2>
+    <script>
+        var dt = new Date();
+        var ano = dt.getFullYear();
+        var html = document.getElementById('titleYear');
+        html.innerHTML = `CURSOS TOUFFIC ${ano}:`;
+    </script>
+    <hr>
+    <a href="/admin/cursos/add"><button class="btn btn-success">Novo curso</button></a>
+    {{#each cursos}}
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 id="txtTitle">{{nome}}</h4>
+                <small><strong>Vagas: </strong> {{vagas}}</small>
+                <br>
+                <small><strong>Professor: </strong> {{professor}}</small>
+                <br>
+                <small><strong>Sala: </strong>{{sala}}</small>   
+                <br>
+                <small><strong>Data: </strong>{{dt}}</small>
+                <br>
+                <small><strong>Duração: </strong>{{duracao}}</small>
+                <br>
+                <small><strong>Descrição: </strong>{{desc}}</small>
+                <br>
+                <a href="/admin/cursos/edit/{{_id}}">
+                    <button class="btn btn-info mt-4">Editar curso</button>
+                </a>
+                <form action="/admin/cursos/deletar" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" class="btn btn-danger mt-2">Excluir curso</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        {{else}}
+        <h4 class="mt-3">Nenhum curso registrado no momento</h4>
+    {{/each}}
+</div>

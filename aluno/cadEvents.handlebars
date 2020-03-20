@@ -1,0 +1,29 @@
+{{>_navbarAluno}}
+<div class="container mt-4">
+    {{>_msg}}
+    {{#each errors}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{text}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {{else}}
+    {{/each}}
+    <h3>Nova Inscrição:</h3>
+    <div class="card">
+        <div class="card-body">
+            <form action="/aluno/inscricoesEvents/cadEvents" method="POST">
+                <label for="aluno">Evento que deseja se inscrever:</label>
+                    <select name="evento" class="form-control">
+                        {{#each eventos}}
+                            <option value="{{_id}}">{{nome}}</option>
+                            {{else}}
+                                <option value="0">Nenhum evento cadastrado no banco de dados</option>
+                        {{/each}}
+                    </select><br>
+                <button type="submit" class="btn btn-success">Finalizar inscrição</button>
+            </form>
+        </div>
+    </div>
+</div>

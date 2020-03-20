@@ -1,0 +1,33 @@
+{{>_navbarAdmin}}
+<div class="container mt-4">
+    {{>_msg}}
+    {{#each errors}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{text}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {{else}}
+    {{/each}}
+    <center>
+        <h3 style="text-decoration: underline;">Editar informações de {{evento.nome}}:</h3>
+    </center>
+    <div class="card mt-4">
+        <div class="card-body">
+            <form action="/admin/eventos/edit" method="POST">
+                <input type="hidden" name="id" value="{{evento._id}}">
+                <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nome" placeholder="nome do evento" class="form-control" value="{{evento.nome}}">
+                <label for="vagas">Vagas:</label>
+                    <input type="number" name="vagas" id="vagas" class="form-control" value="{{evento.vagas}}">
+                <label for="desc">Descrição:</label>
+                    <input type="text" name="desc" id="desc" class="form-control" value="{{evento.desc}}">
+                <label for="dt">Data::</label>
+                    <input type="date" name="dt" id="dt" class="form-control" value="{{evento.dt}}">
+                <br>
+                <button type="submit" class="btn btn-success">Salvar alterações</button>
+            </form>
+        </div>
+    </div>
+</div>
